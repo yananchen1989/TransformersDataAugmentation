@@ -14,8 +14,8 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 
-from transformers.tokenization_bert import BertTokenizer
-from transformers.modeling_bert import BertForMaskedLM
+from transformers import BertTokenizer
+from transformers import BertForMaskedLM
 
 from transformers import AdamW
 from data_processors import get_task_processor

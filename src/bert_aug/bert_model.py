@@ -5,7 +5,7 @@
 # Credit https://github.com/huggingface/transformers/blob/master/examples/run_glue.py
 
 from transformers import BertTokenizer
-from transformers.modeling_bert import BertForSequenceClassification
+from transformers import BertForSequenceClassification
 
 from transformers import AdamW, get_linear_schedule_with_warmup
 from transformers import glue_convert_examples_to_features as convert_examples_to_features
