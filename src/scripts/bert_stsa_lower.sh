@@ -11,7 +11,7 @@ do
         RAWDATADIR=$SRC/utils/datasets/${TASK}/exp_${i}_${NUMEXAMPLES}
 
        # Baseline classifier
-        python $SRC/bert_aug/bert_classifier.py --task $TASK  --data_dir $RAWDATADIR --seed ${i} --learning_rate $BERTLR --cache $CACHE > $RAWDATADIR/bert_baseline.log
+        python $SRC/bert_aug/bert_classifier.py --task $TASK  --data_dir $RAWDATADIR --seed ${i}  --cache $CACHE > $RAWDATADIR/bert_baseline.log
 
       ##############
       ## EDA
@@ -23,7 +23,7 @@ do
       cat $RAWDATADIR/train.tsv $EDADIR/eda_aug.tsv > $EDADIR/train.tsv
       cp $RAWDATADIR/test.tsv $EDADIR/test.tsv
       cp $RAWDATADIR/dev.tsv $EDADIR/dev.tsv
-      python $SRC/bert_aug/bert_classifier.py --task $TASK --data_dir $EDADIR --seed ${i} --learning_rate $BERTLR --cache $CACHE  > $RAWDATADIR/bert_eda.log
+      python $SRC/bert_aug/bert_classifier.py --task $TASK --data_dir $EDADIR --seed ${i}  --cache $CACHE  > $RAWDATADIR/bert_eda.log
 
 
         #######################
