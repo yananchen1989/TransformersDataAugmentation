@@ -9,6 +9,8 @@ do
     for i in {0..14};
         do
         RAWDATADIR=$SRC/utils/datasets/${TASK}/exp_${i}_${NUMEXAMPLES}
+        echo "===>"
+        echo ${RAWDATADIR}
 
        # Baseline classifier
         python $SRC/bert_aug/bert_classifier.py --task $TASK  --data_dir $RAWDATADIR --seed ${i}  --cache $CACHE > $RAWDATADIR/bert_baseline.log
