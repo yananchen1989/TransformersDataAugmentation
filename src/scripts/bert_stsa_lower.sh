@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-SRC=./src
-CACHE=~/CACHE
+SRC=/root/topic_classification_augmentation/TransformersDataAugmentation/src
+CACHE=/root/topic_classification_augmentation/TransformersDataAugmentation/CACHE
 TASK=stsa
 
 for NUMEXAMPLES in 100;
