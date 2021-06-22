@@ -4,9 +4,11 @@ SRC=/root/topic_classification_augmentation/TransformersDataAugmentation/src
 CACHE=/root/topic_classification_augmentation/TransformersDataAugmentation/CACHE
 TASK=stsa
 
+
+
 for NUMEXAMPLES in 100;
 do
-    for i in {0..14};
+    for i in $(seq 0 14);
         do
         RAWDATADIR=$SRC/utils/datasets/${TASK}/exp_${i}_${NUMEXAMPLES}
         echo "===>"
