@@ -4,7 +4,7 @@ SRC=./src
 CACHE=~/CACHE
 TASK=stsa
 
-for NUMEXAMPLES in 10;
+for NUMEXAMPLES in 100;
 do
     for i in {0..14};
         do
