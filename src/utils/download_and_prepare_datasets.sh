@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 mkdir datasets
-NUMDEV=10
+NUMDEV=100
 NUMEXP=15
 
 # TREC dataset
@@ -23,7 +23,7 @@ for split in train dev test;
     python convert_num_to_text_labels.py -i datasets/stsa/${split}.raw -o datasets/stsa/${split}.tsv -d stsa
     rm datasets/stsa/${split}.raw
   done
-python create_fsl_dataset.py -datadir datasets/stsa -num_train 10 -num_dev $NUMDEV -sim $NUMEXP -lower
+python create_fsl_dataset.py -datadir /root/datasets_aug/stsa -num_train 100 -num_dev 100 -sim 15 -lower
 
 
 # SNIPS dataset
