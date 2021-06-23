@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 mkdir datasets
 NUMDEV=100
 NUMEXP=15
@@ -24,8 +25,7 @@ for split in train dev test;
     rm datasets/stsa/${split}.raw
   done
 
-python create_fsl_dataset.py -datadir ./datasets/stsa -num_train 100 -num_dev 100 -sim 100
-python create_fsl_dataset.py -datadir ./datasets/yahoo -num_train 100 -num_dev 500 -sim 100 
+
 
 # SNIPS dataset
 mkdir -p datasets/snips
