@@ -15,7 +15,7 @@ for i in $(seq 0 14);
     echo ${RAWDATADIR}
 
    # Baseline classifier
-    python ./bert_aug/bert_classifier.py --task $TASK  --data_dir $RAWDATADIR --seed ${i}  --cache $CACHE > $RAWDATADIR/bert_baseline.log
+    python ./bert_aug/bert_classifier.py --task $TASK  --data_dir $RAWDATADIR --seed ${i}  --cache $CACHE > ${TASK}_${i}_bert_baseline.log
 
   ##############
   ## EDA
@@ -27,7 +27,7 @@ for i in $(seq 0 14);
   cat $RAWDATADIR/train.tsv $EDADIR/eda_aug.tsv > $EDADIR/train.tsv
   cp $RAWDATADIR/test.tsv $EDADIR/test.tsv
   cp $RAWDATADIR/dev.tsv $EDADIR/dev.tsv
-  python ./bert_aug/bert_classifier.py --task $TASK --data_dir $EDADIR --seed ${i}  --cache $CACHE  > $RAWDATADIR/bert_eda.log
+  python ./bert_aug/bert_classifier.py --task $TASK --data_dir $EDADIR --seed ${i}  --cache $CACHE  > ${TASK}_${i}_bert_eda.log
 
 
     #######################
@@ -40,7 +40,7 @@ for i in $(seq 0 14);
     cat $RAWDATADIR/train.tsv $GPT2DIR/cmodgpt2_aug_3.tsv > $GPT2DIR/train.tsv
     cp $RAWDATADIR/test.tsv $GPT2DIR/test.tsv
     cp $RAWDATADIR/dev.tsv $GPT2DIR/dev.tsv
-    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $GPT2DIR --seed ${i} --cache $CACHE > $RAWDATADIR/bert_gpt2_3.log
+    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $GPT2DIR --seed ${i} --cache $CACHE > ${TASK}_${i}_bert_gpt2_3.log
 
 #    #######################
 #    # Backtranslation DA Classifier
@@ -52,7 +52,7 @@ python ./bert_aug/backtranslation.py --data_dir $RAWDATADIR --output_dir $BTDIR 
 cat $RAWDATADIR/train.tsv $BTDIR/bt_aug.tsv > $BTDIR/train.tsv
 cp $RAWDATADIR/test.tsv $BTDIR/test.tsv
 cp $RAWDATADIR/dev.tsv $BTDIR/dev.tsv
-python ./bert_aug/bert_classifier.py --task $TASK --data_dir $BTDIR --seed ${i} --cache $CACHE  > $RAWDATADIR/bert_bt.log
+python ./bert_aug/bert_classifier.py --task $TASK --data_dir $BTDIR --seed ${i} --cache $CACHE  > ${TASK}_${i}_bert_bt.log
 
 # #######################
 # # CBERT Classifier
@@ -64,7 +64,7 @@ python ./bert_aug/cbert.py --data_dir $RAWDATADIR --output_dir $CBERTDIR --task_
 cat $RAWDATADIR/train.tsv $CBERTDIR/cbert_aug.tsv > $CBERTDIR/train.tsv
 cp $RAWDATADIR/test.tsv $CBERTDIR/test.tsv
 cp $RAWDATADIR/dev.tsv $CBERTDIR/dev.tsv
-python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CBERTDIR --seed ${i} --cache $CACHE > $RAWDATADIR/bert_cbert.log
+python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CBERTDIR --seed ${i} --cache $CACHE > ${TASK}_${i}_bert_cbert.log
 
 # #######################
 # # CMODBERT Classifier
@@ -76,7 +76,7 @@ python ./bert_aug/cmodbert.py --data_dir $RAWDATADIR --output_dir $CMODBERTDIR -
 cat $RAWDATADIR/train.tsv $CMODBERTDIR/cmodbert_aug.tsv > $CMODBERTDIR/train.tsv
 cp $RAWDATADIR/test.tsv $CMODBERTDIR/test.tsv
 cp $RAWDATADIR/dev.tsv $CMODBERTDIR/dev.tsv
-python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CMODBERTDIR --seed ${i} --cache $CACHE > $RAWDATADIR/bert_cmodbert.log
+python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CMODBERTDIR --seed ${i} --cache $CACHE > ${TASK}_${i}_bert_cmodbert.log
 
 # #######################
 # # CMODBERTP Classifier
@@ -88,7 +88,7 @@ python ./bert_aug/cmodbertp.py --data_dir $RAWDATADIR --output_dir $CMODBERTPDIR
 cat $RAWDATADIR/train.tsv $CMODBERTPDIR/cmodbertp_aug.tsv > $CMODBERTPDIR/train.tsv
 cp $RAWDATADIR/test.tsv $CMODBERTPDIR/test.tsv
 cp $RAWDATADIR/dev.tsv $CMODBERTPDIR/dev.tsv
-python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CMODBERTPDIR --seed ${i}  --cache $CACHE > $RAWDATADIR/bert_cmodbertp.log
+python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CMODBERTPDIR --seed ${i}  --cache $CACHE > ${TASK}_${i}_bert_cmodbertp.log
 
 done
 

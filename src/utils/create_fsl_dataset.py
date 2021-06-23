@@ -86,7 +86,7 @@ if __name__ == '__main__':
     parser.add_argument('-sim', help='Number of simulations', type=int, default=15)
 
     # data pre-processing steps
-    parser.add_argument('-lower', action='store_true', default=False)
+    parser.add_argument('-lower', action='store_true', default=True)
     args = parser.parse_args()
     split_data(data_dir=args.datadir,
                num_train=args.num_train,
