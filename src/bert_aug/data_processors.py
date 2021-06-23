@@ -10,14 +10,15 @@ def get_task_processor(task, data_dir):
     """
     A TSV processor for stsa, trec and snips dataset.
     """
-    if task == 'stsa':
-        return TSVDataProcessor(data_dir=data_dir, skip_header=False, label_col=0, text_col=1)
-    elif task == 'trec':
-        return TSVDataProcessor(data_dir=data_dir, skip_header=False, label_col=0, text_col=1)
-    elif task == 'snips':
-        return TSVDataProcessor(data_dir=data_dir, skip_header=False, label_col=0, text_col=1)
-    else:
-        raise ValueError('Unknown task')
+    return TSVDataProcessor(data_dir=data_dir, skip_header=False, label_col=0, text_col=1)
+    # if task == 'stsa':
+    #     return TSVDataProcessor(data_dir=data_dir, skip_header=False, label_col=0, text_col=1)
+    # elif task == 'trec':
+    #     return TSVDataProcessor(data_dir=data_dir, skip_header=False, label_col=0, text_col=1)
+    # elif task == 'snips':
+    #     return TSVDataProcessor(data_dir=data_dir, skip_header=False, label_col=0, text_col=1)
+    # else:
+    #     raise ValueError('Unknown task')
 
 
 def get_data(task, data_dir, data_seed=159):
