@@ -21,4 +21,4 @@ for aug in  ['baseline', 'eda', 'bt', 'gpt2_3', 'cbert','cmodbert','cmodbertp']:
                     accs.append(acc)
 
     assert len(accs) ==  len(files)
-    print(aug, 'iter:', len(accs), 'mean acc==>', np.array(accs).mean())          
+    print(aug, 'iter:', len(accs), 'mean acc==>', round(np.array(accs).mean(),4))          
