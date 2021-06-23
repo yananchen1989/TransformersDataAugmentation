@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # pip install torch==1.6.0 torchvision==0.7.0
 #SRC=/root/topic_classification_augmentation/TransformersDataAugmentation/src
+
+source /root/topic_classification_augmentation/cbert_aug/env_cbert/bin/activate
 CACHE=/root/topic_classification_augmentation/TransformersDataAugmentation/CACHE
 TASK=${1}
 MAXLEN=100
