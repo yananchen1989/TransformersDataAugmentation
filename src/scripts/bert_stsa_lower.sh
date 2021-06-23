@@ -5,7 +5,7 @@ CACHE=/root/topic_classification_augmentation/TransformersDataAugmentation/CACHE
 TASK=${1}
 
 
-python ./utils/create_fsl_dataset.py -datadir ./datasets/${TASK} -num_train 100 -num_dev 500 -sim 20 
+python ./utils/create_fsl_dataset.py -datadir ./utils/datasets/${TASK} -num_train 100 -num_dev 500 -sim 20 
 
 
 for i in $(seq 0 20);
