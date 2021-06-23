@@ -65,7 +65,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--task', choices=['stsa', 'snips', 'trec'])
+    parser.add_argument('--task')
     parser.add_argument('--data_dir', type=str, help="Data dir path with {train, dev, test}.tsv")
     parser.add_argument('--seed', default=159, type=int)
     parser.add_argument('--hidden_dropout_prob', default=0.1, type=float)

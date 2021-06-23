@@ -3,7 +3,7 @@
 #SRC=/root/topic_classification_augmentation/TransformersDataAugmentation/src
 CACHE=/root/topic_classification_augmentation/TransformersDataAugmentation/CACHE
 TASK=${1}
-
+MAXLEN=100
 
 python ./utils/create_fsl_dataset.py -datadir ./utils/datasets/${TASK} -num_train 100 -num_dev 500 -sim 20 
 
@@ -16,7 +16,7 @@ for i in $(seq 0 20);
     echo ${RAWDATADIR}
 
    # Baseline classifier
-    python ./bert_aug/bert_classifier.py --task $TASK  --data_dir $RAWDATADIR --seed ${i}  --cache $CACHE > ${TASK}_${i}_bert_baseline.log
+    python ./bert_aug/bert_classifier.py --task $TASK  --data_dir $RAWDATADIR --seed ${i}  --max_seq_length ${MASKLEN} --cache $CACHE > ${TASK}_${i}_bert_baseline.log
 
   ##############
   ## EDA
@@ -28,7 +28,7 @@ for i in $(seq 0 20);
   cat $RAWDATADIR/train.tsv $EDADIR/eda_aug.tsv > $EDADIR/train.tsv
   cp $RAWDATADIR/test.tsv $EDADIR/test.tsv
   cp $RAWDATADIR/dev.tsv $EDADIR/dev.tsv
-  python ./bert_aug/bert_classifier.py --task $TASK --data_dir $EDADIR --seed ${i}  --cache $CACHE  > ${TASK}_${i}_bert_eda.log
+  python ./bert_aug/bert_classifier.py --task $TASK --data_dir $EDADIR --seed ${i}  --cache $CACHE  --max_seq_length ${MASKLEN}  > ${TASK}_${i}_bert_eda.log
 
 
     #######################
@@ -41,7 +41,7 @@ for i in $(seq 0 20);
     cat $RAWDATADIR/train.tsv $GPT2DIR/cmodgpt2_aug_3.tsv > $GPT2DIR/train.tsv
     cp $RAWDATADIR/test.tsv $GPT2DIR/test.tsv
     cp $RAWDATADIR/dev.tsv $GPT2DIR/dev.tsv
-    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $GPT2DIR --seed ${i} --cache $CACHE > ${TASK}_${i}_bert_gpt2_3.log
+    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $GPT2DIR --seed ${i} --cache $CACHE --max_seq_length ${MASKLEN}  > ${TASK}_${i}_bert_gpt2_3.log
 
     #    #######################
     #    # Backtranslation DA Classifier
@@ -53,7 +53,7 @@ for i in $(seq 0 20);
     cat $RAWDATADIR/train.tsv $BTDIR/bt_aug.tsv > $BTDIR/train.tsv
     cp $RAWDATADIR/test.tsv $BTDIR/test.tsv
     cp $RAWDATADIR/dev.tsv $BTDIR/dev.tsv
-    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $BTDIR --seed ${i} --cache $CACHE  > ${TASK}_${i}_bert_bt.log
+    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $BTDIR --seed ${i} --cache $CACHE  --max_seq_length ${MASKLEN}  > ${TASK}_${i}_bert_bt.log
 
     # #######################
     # # CBERT Classifier
@@ -65,7 +65,7 @@ for i in $(seq 0 20);
     cat $RAWDATADIR/train.tsv $CBERTDIR/cbert_aug.tsv > $CBERTDIR/train.tsv
     cp $RAWDATADIR/test.tsv $CBERTDIR/test.tsv
     cp $RAWDATADIR/dev.tsv $CBERTDIR/dev.tsv
-    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CBERTDIR --seed ${i} --cache $CACHE > ${TASK}_${i}_bert_cbert.log
+    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CBERTDIR --seed ${i} --cache $CACHE --max_seq_length ${MASKLEN} > ${TASK}_${i}_bert_cbert.log
 
     # #######################
     # # CMODBERT Classifier
@@ -77,7 +77,7 @@ for i in $(seq 0 20);
     cat $RAWDATADIR/train.tsv $CMODBERTDIR/cmodbert_aug.tsv > $CMODBERTDIR/train.tsv
     cp $RAWDATADIR/test.tsv $CMODBERTDIR/test.tsv
     cp $RAWDATADIR/dev.tsv $CMODBERTDIR/dev.tsv
-    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CMODBERTDIR --seed ${i} --cache $CACHE > ${TASK}_${i}_bert_cmodbert.log
+    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CMODBERTDIR --seed ${i} --cache $CACHE --max_seq_length ${MASKLEN}  > ${TASK}_${i}_bert_cmodbert.log
 
     # #######################
     # # CMODBERTP Classifier
@@ -89,7 +89,7 @@ for i in $(seq 0 20);
     cat $RAWDATADIR/train.tsv $CMODBERTPDIR/cmodbertp_aug.tsv > $CMODBERTPDIR/train.tsv
     cp $RAWDATADIR/test.tsv $CMODBERTPDIR/test.tsv
     cp $RAWDATADIR/dev.tsv $CMODBERTPDIR/dev.tsv
-    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CMODBERTPDIR --seed ${i}  --cache $CACHE > ${TASK}_${i}_bert_cmodbertp.log
+    python ./bert_aug/bert_classifier.py --task $TASK --data_dir $CMODBERTPDIR --seed ${i}  --cache $CACHE --max_seq_length ${MASKLEN}  > ${TASK}_${i}_bert_cmodbertp.log
 
 done
 
