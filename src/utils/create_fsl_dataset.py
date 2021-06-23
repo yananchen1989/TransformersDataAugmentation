@@ -54,8 +54,8 @@ def split_data(data_dir, num_train, num_dev, num_simulations, lower):
         exp_folder_path = os.path.join(data_dir, "exp_{}_{}".format(exp_id, num_train))
         if not os.path.exists(exp_folder_path):
             os.mkdir(exp_folder_path)
-        else:
-            raise ValueError("Directory {} already exists".format(exp_folder_path))
+        # else:
+        #     raise ValueError("Directory {} already exists".format(exp_folder_path))
 
         # randomly select train data
         target_train_file = os.path.join(exp_folder_path, "train.tsv")

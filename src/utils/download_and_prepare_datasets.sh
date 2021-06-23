@@ -23,8 +23,9 @@ for split in train dev test;
     python convert_num_to_text_labels.py -i datasets/stsa/${split}.raw -o datasets/stsa/${split}.tsv -d stsa
     rm datasets/stsa/${split}.raw
   done
-python create_fsl_dataset.py -datadir /root/datasets_aug/stsa -num_train 100 -num_dev 100 -sim 15 -lower
-python create_fsl_dataset.py -datadir ./datasets/yahoo -num_train 100 -num_dev 500 -sim 15 
+
+python create_fsl_dataset.py -datadir ./datasets/stsa -num_train 100 -num_dev 100 -sim 100
+python create_fsl_dataset.py -datadir ./datasets/yahoo -num_train 100 -num_dev 500 -sim 100 
 
 # SNIPS dataset
 mkdir -p datasets/snips
